@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "559156910283",
+    "project_id": "backpacking-83f5f",
+    "storage_bucket": "backpacking-83f5f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:559156910283:android:b76678370cc1676cf0234e",
+        "android_client_info": {
+          "package_name": "com.example.eduxo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "559156910283-3fthh18c25eeq98ctnob3uvjkgvp9kq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmQgOZpM9qJ2yWKIP15efTosE6lyxC5h4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "559156910283-3fthh18c25eeq98ctnob3uvjkgvp9kq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
