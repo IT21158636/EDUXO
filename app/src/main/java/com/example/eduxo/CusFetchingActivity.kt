@@ -10,23 +10,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
 
-class FetchingActivity : AppCompatActivity() {
+class CusFetchingActivity : AppCompatActivity() {
 
     private lateinit var empRecyclerView: RecyclerView
     private lateinit var tvLoadingData: TextView
-    private lateinit var empList: ArrayList<EmployeeModel>
+    private lateinit var empList: ArrayList<CustomerModel>
     private lateinit var dbRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fetching)
+        setContentView(R.layout.activity_cusfetching)
 
         empRecyclerView = findViewById(R.id.rvEmp)
         empRecyclerView.layoutManager = LinearLayoutManager(this)
         empRecyclerView.setHasFixedSize(true)
         tvLoadingData = findViewById(R.id.tvLoadingData)
 
-        empList = arrayListOf<EmployeeModel>()
+        empList = arrayListOf<CustomerModel>()
 
         getEmployeesData()
 
@@ -44,16 +44,16 @@ class FetchingActivity : AppCompatActivity() {
                 empList.clear()
                 if (snapshot.exists()){
                     for (empSnap in snapshot.children){
-                        val empData = empSnap.getValue(EmployeeModel::class.java)
+                        val empData = empSnap.getValue(CustomerModel::class.java)
                         empList.add(empData!!)
                     }
-                    val mAdapter = EmpAdapter(empList)
+                    val mAdapter = CusAdapter(empList)
                     empRecyclerView.adapter = mAdapter
 
-                    mAdapter.setOnItemClickListener(object : EmpAdapter.onItemClickListener{
+                    mAdapter.setOnItemClickListener(object : CusAdapter.onItemClickListener{
                         override fun onItemClick(position: Int) {
 
-                            val intent = Intent(this@FetchingActivity, EmployeeDetailsActivity::class.java)
+                            val intent = Intent(this@CusFetchingActivity, CustomerDetailsActivity::class.java)
 
                             //put extras
                             intent.putExtra("empId", empList[position].empId)

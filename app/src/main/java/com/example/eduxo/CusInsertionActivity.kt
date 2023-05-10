@@ -1,5 +1,6 @@
 package com.example.eduxo
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -8,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class InsertionActivity : AppCompatActivity() {
+class CusInsertionActivity : AppCompatActivity() {
 
     private lateinit var etEmpName: EditText
     private lateinit var etEmpAge: EditText
@@ -18,14 +19,15 @@ class InsertionActivity : AppCompatActivity() {
 
     private lateinit var dbRef: DatabaseReference
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_insertion)
 
-        etEmpName = findViewById(R.id.etEmpName)
-        etEmpAge = findViewById(R.id.etEmpAge)
-        etLastname = findViewById(R.id.etLastname)
-        etEmpSalary = findViewById(R.id.etEmpSalary)
+        etEmpName = findViewById(R.id.cusFname)
+        etEmpAge = findViewById(R.id.cusEmail)
+        etLastname = findViewById(R.id.cusLname)
+        etEmpSalary = findViewById(R.id.cusPassword)
         btnSaveData = findViewById(R.id.btnSave)
 
         dbRef = FirebaseDatabase.getInstance().getReference("Employees")
@@ -39,9 +41,10 @@ class InsertionActivity : AppCompatActivity() {
 
         //getting values
         val empName = etEmpName.text.toString()
+        val empLastname = etLastname.text.toString()
         val empAge = etEmpAge.text.toString()
         val empSalary = etEmpSalary.text.toString()
-        val empLastname = etLastname.text.toString()
+
 
         if (empName.isEmpty()) {
             etEmpName.error = "Please enter first name"
@@ -58,13 +61,14 @@ class InsertionActivity : AppCompatActivity() {
 
         val empId = dbRef.push().key!!
 
-        val employee = EmployeeModel(empId, empName, empAge, empSalary,empLastname)
+        val employee = CustomerModel(empId, empName,empLastname, empAge, empSalary)
 
         dbRef.child(empId).setValue(employee)
             .addOnCompleteListener {
                 Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_LONG).show()
 
                 etEmpName.text.clear()
+                etLastname.text.clear()
                 etEmpAge.text.clear()
                 etEmpSalary.text.clear()
 

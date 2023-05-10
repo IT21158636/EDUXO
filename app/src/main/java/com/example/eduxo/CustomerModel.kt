@@ -1,6 +1,6 @@
 package com.example.eduxo
 
-data class EmployeeModel(
+data class CustomerModel(
     var empId: String? = null,
     var empName: String? = null,
     var empAge: String? = null,

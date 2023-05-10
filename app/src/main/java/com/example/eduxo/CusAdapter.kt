@@ -7,8 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 
-class EmpAdapter(private val empList: ArrayList<EmployeeModel>) :
-    RecyclerView.Adapter<EmpAdapter.ViewHolder>() {
+class CusAdapter(private val empList: ArrayList<CustomerModel>) :
+    RecyclerView.Adapter<CusAdapter.ViewHolder>() {
 
     private lateinit var mListener: onItemClickListener
 
@@ -21,7 +21,7 @@ class EmpAdapter(private val empList: ArrayList<EmployeeModel>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.quizes, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cusquizes, parent, false)
         return ViewHolder(itemView, mListener)
     }
 

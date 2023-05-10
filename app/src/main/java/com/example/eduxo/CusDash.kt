@@ -1,21 +1,21 @@
 package com.example.eduxo
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.eduxo.FetchingActivity
-import com.example.eduxo.InsertionActivity
-import com.example.eduxo.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class MainActivity : AppCompatActivity() {
+class CusDash : AppCompatActivity() {
 
     private lateinit var btnInsertData: Button
 
     private lateinit var btnFetchData: Button
+    private lateinit var btnSign: Button
 
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,14 +28,19 @@ class MainActivity : AppCompatActivity() {
 
 
         btnInsertData.setOnClickListener {
-            val intent = Intent(this, InsertionActivity::class.java)
+            val intent = Intent(this, CusInsertionActivity::class.java)
             startActivity(intent)
         }
 
         btnFetchData.setOnClickListener {
-            val intent = Intent(this, FetchingActivity::class.java)
+            val intent = Intent(this, CusFetchingActivity::class.java)
             startActivity(intent)
         }
+
+
+
+
+
 
     }
 }
